@@ -1,20 +1,10 @@
-// Primero vamos atrabajar como se hacia antes de ES6
-function newFunction(name, age, country) {
-    var name = name || "Andres";
-    var age = age || 28;
-    var country = country || "BR";
-    console.log(name,age,country);
-}
+// Ahora, vamos a trabajar con arrays
+let team1 = ["Oscar", "Julian", "Ricardo"];
+let team2 = ["Valeria", "Yesica", "Camila"];
 
-// Ahora con ES6 se realiza asi
+// Ahora, queremos tener un array que contega a team1 y team2. pero ademas
+// de esto, agregar un nuevo miembro que seria David, Para esto, usaremos
+// el (...), esto nos permite traer un array competo
+let education = ["David", ...team1, ...team2];
 
-function newFunction2(name = "oscar", age=32, country="CO") {
-    console.log(name, age, country);
-}
-
-// Para llamar la funcion hay dos formas:
-// Para el primer caso, hay funciones que tomas los atributos por si mismos,
-// entonces se pueden dejar vacias
-
-newFunction();
-newFunction2("Jeff", "24", "CO");
+console.log(education);
