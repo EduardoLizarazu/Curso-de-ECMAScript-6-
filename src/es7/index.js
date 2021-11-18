@@ -1,34 +1,20 @@
 
-// Clase #8 Async Await
+// Clase #6 ¿Qué se implementó en ES7?
 
-// Estructura de promesa
-const helloWorld = () => {
-    return new Promise((resolve, reject) => {
-        //if ternario
-        (true)
-            ? setTimeout(() => resolve("Hello World"), 3000)
-            : reject(new Error("Test Error"))
-    })
-};
+// Object.includes();
 
+let numbers = [1,2,3,7,5,6,9];
 
-//estructura basica de Async Await
-const helloAsync = async () => {
-    // Ejecutamos nuestra promesa, va a esperar antes de cumplir la sentencia
-    const message = await helloWorld();
-    console.log(message);
-};
-helloAsync();
+if (numbers.includes(7)) {
+    console.log("Si se encuentra el valor 7");
+} else {
+    console.log("No se encuentra el valor 7");
+}
 
-//Async Await con try-catch
+// Elevar a la potencia
 
-const anotherFunction = async () => {
-    try {
-        const hello = await helloWorld();
-        console.log(hello);
-    } catch (error) {
-        console.log(error);
-    }
-};
+let base = 4;
+let exponent = 3;
+let result = base ** exponent;
 
-anotherFunction();
+console.log(result);
