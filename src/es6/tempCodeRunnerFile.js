@@ -1,10 +1,14 @@
-// Ahora, vamos a trabajar con arrays
-let team1 = ["Oscar", "Julian", "Ricardo"];
-let team2 = ["Valeria", "Yesica", "Camila"];
+ 
+let name = "Jeff";
+let age = 24;
 
-// Ahora, queremos tener un array que contega a team1 y team2. pero ademas
-// de esto, agregar un nuevo miembro que seria David, Para esto, usaremos
-// el (...), esto nos permite traer un array competo
-let education = ["David", ...team1, ...team2];
+//antes de ES6
 
-console.log(education);
+obj = { name: name, age: age };
+
+//ahora con ES6
+
+obj2 = {name, age};
+
+// Ahora, se mostrara en consola para verificar que efectivamente se creo el objeto
+console.log(obj2);

@@ -1,70 +1,99 @@
-// Clase #3 LET y CONST, Multilínea, Spread Operator y Desestructuración
+/// Clase#4 Arrow Functions, Promesas y Parámetros en objetos
 
-// Antes de ES6 pasaba esto
+// PRPPIEDADES DE OBJETSO MEJORADA
 
-let Elsa = "Libre soy, libre soy ... no puedo ocultarlo \n "
- + "mas, libre soy";
-// esto funcionaba, sin embargo, no es una opcion muy optima que digamos
+// definiremos algunas variables primero
+ 
+let name = "Jeff";
+let age = 24;
 
-// Ahora usando ES6
+//antes de ES6
 
-let Elsa2 = `Voy a probar que puedo hacer sin limitar
-mi proceder, ni mal ni bien que obeder
-jaaammmmmmmm`;
+obj = { name: name, age: age };
 
-// Ahora, para verificar que ambas fommas funcionan usaremos la consola
+//ahora con ES6
 
-console.log(Elsa);
-console.log(Elsa2);
+obj2 = {name, age};
 
-/// Nota1: Notar que si bien el uso del (;) no es necesario, en estos casos, lo usamos porque hace parte de las buenas practicas de programacion para que los demas vean el codigo lo mas legible posible
+// Ahora, se mostrara en consola para verificar que efectivamente se creo el objeto
+console.log(obj2);
 
-// Ahora, crearemos un objeto
 
-let person = {
-    "name": "Jeff",
-    "age": 24,
-    "country": "CO"
+// AHORA VEREMOS LAS ARROW FUNCTION
+
+// Estas tienen una sintaxis muy reducida y permite trabajar con This no vinculables
+// Pero ¿Como funcionan?
+
+const names = [
+    {name: "Jeff", age: 24},
+    {name: "Aleja", age: 21}
+]
+
+// como pudimos ver, vamos a trabajar con un array de dos objetos, dichos objetos son anonimos
+
+// Antes de ES6
+
+let listOfNames = names.map(function(item) {
+    console.log(item.name);
+})
+
+// Defino el nombre de mi varible en la que voy a trabajar (listOfNames), ahora, utilizo el metodo .map. Por si no recuerdan, .map me permiete crear un nuevo array dependiendo de la funcion a la que llame. Generalmente, se usaba funciones anonimas.
+
+// Ahora, con ES6
+
+let listOfNames2 = names.map(item => console.log(item.name));
+
+// Algo caracteristico e indispensable de las arrow function es el (=>) esto inmediatamente nos indica que estamos trabajando con una arrow function. Ahora bien, es posible observar que en este tipo de funciones nos ahorramos definir una funcion anonima y es pasible expresarlo todo en una sola linea. En este caso en particular, esta funcion nos mostrara en consola todos los nombres de nuestro array.
+
+// Otra forma de escrbir las arrow funcion: 
+const listOfNames3 = (name, age, country) => {
+    /* ... */
 }
 
-//Del curso de fundamentos de JS, sabemos que al usar la notacion person.name (por ejemplo), llamaresmos al atributo correspondiente a la key name del objeto person
+// tener en cuenta que en esta forma, trabajamos con las keys que necesitamos de los objetos. Y los (...) nos indica que ahi va el bloque de codigo de la funcion que necesitamos que haga
 
-console.log(person.name, person.age);
+// Ahora, otra forma seria:
 
-// Ahora vamos a desestructurar nuestro objeto
-
-let { name, age } = person;
-// con lo anterior lo que hicimos fue desestructurar nuestro objeto, esta notacion es super util porque podemos elegir cuales keys necesitamos del mismo objeto y ya puedo proceder a desplazarlas en la consola sin necesidad de utilizar (object.keys)
-
-console.log(name, age);
-
-// Ahora, vamos a trabajar con arrays
-let team1 = ["Oscar", "Julian", "Ricardo"];
-let team2 = ["Valeria", "Yesica", "Camila"];
-
-// Ahora, queremos tener un array que contega a team1 y team2. pero ademas de esto, agregar un nuevo miembro que seria David, Para esto, usaremos el (...), esto nos permite traer un array competo
-let education = ["David", ...team1, ...team2];
-
-console.log(education);
-
-// Originalmente se usaba var par asignar variable 
-// Podemos ver que usamos mucho LET, pero ¿por que?. Bueno, LET se usaba para el scope, es decir, se define para el bloque de codigo en el cual se va a usar
-
-{
-    var global = "Global Var";
+const listOfNames4 = name => {
+    /* ... */
 }
 
-{
-    let globallet = "Global Let";
-    console.log(globallet);
+// este ultimo se usa solo cuando voy a trabajar con un unico atributo, de forma queme puedo evitar colocar los parentesis
+
+// Finalmente, la ultima forma seria
+
+const square = num => num*num;
+
+
+/// AHORA TRABAJEMOS CON PROMESAS
+// JS no es sincronico, significa qeu no puede haber mas de un evento que se este ejecuntando.
+
+// Para solucionar el problema del asincronismo en JS, ademas del Callback Hell nacen las promesas. Basicamente, una promesa en JS nos indica que algo va a pasar.
+
+// PILAS, JS es asincronico todo el tiempo. Debes comprender muy bien esto para entender como tu codigo va a correr y no toparte con algo inesperado en tu prorama.
+
+// trabajaremos con arrow functions
+const helloPromise = () => {
+    return new Promise ((resolve, reject) => {
+        if (true) {
+            resolve("Hey!");
+        } else {
+            resolve("Ups!");
+        }
+    });
 }
+// Aclaremos un poco:
+// Las promesas tienen 3 estados: pending, resove, reject.
+/**
+ * Resolve: Nos quiere decir que la promesa se complio
+ * Reject: Significa que la promesa NO se cumplio
+ * Para poder verificar si se cumplio o no acudimos al uso de condicionales (if, else)
+ */
 
-console.log(global);
+helloPromise() // esta linea nos permite ejecutar la promesa
+    .then(response => console.log(response))
+    .then(()=> console.log("Hola"))
+    .catch(error => console.log(error));
 
-// ¿Por que no usar VAR? JS es un lenguje debilmente tipado, es decir, cuando definimos una variable con VAR, podemos cambiar su valor en el transcurso del codigo y con esto podriamos ocasionar distintos BUGS y errores en nuestro programa. Por dicho motivo es mejor usar LET y CONST
-
-const a = "b";
-a = "a";
-
-// a diferencia de LET, const se puede utilizar en el scope global, sin embargo, este no se deja modificar como si lo hacia VAR. Cuando intentamos hacerlo, este nos muestra el valor inicial que le pusimos a nuestra variable y posteriormente un error que corresponde a cuando quisimos reasignarle otro valor.
-console.log(a);
+// then nos permite obtener la respuesta (pueden ser varios)
+// catch me permite objeter el error en caso de que no se cumpla la promesa
