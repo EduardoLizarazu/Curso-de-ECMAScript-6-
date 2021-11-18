@@ -11,9 +11,10 @@ class calculator {
     }
     sum(valueA,valueB) {
         //sum vendria siendo un metodo
-        this.valueA = valueA;
-        this.valueB = valueB;
-        return this.valueA + this.valueB;
+        // this.valueA = valueA;
+        // this.valueB = valueB;
+        // return this.valueA + this.valueB;
+        return valueA + valueB;
     }
 }
 
