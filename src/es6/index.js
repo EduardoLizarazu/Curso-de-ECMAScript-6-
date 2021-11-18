@@ -27,7 +27,9 @@ console.log(calc.sum(5,5));
 /// Ahora, ¿como trabajamos con MODULOS?
 // Para esto, crearemos otro archivo
 
-import { hello } from './module';
+// con esta linea importamos el modulo
+// esto significa que podemos tener funcioens que hagan ciertas tareas en especifico (como llamar a una API), fuera de nuestro documento principal y simplemente importarlas
+import hello from './module';
 
 hello();
 
