@@ -1,14 +1,24 @@
- 
-let name = "Jeff";
-let age = 24;
+// trabajaremos con arrow functions
+const helloPromise = () => {
+    return new Promise ((resolve, reject) => {
+        if (false) {
+            resolve("Hey!");
+        } else {
+            reject("Ups!");
+        }
+    });
+}
+// Aclaremos un poco:
+// Las promesas tienen 3 estados: pending, resove, reject.
+/**
+ * Resolve: Nos quiere decir que la promesa se complio
+ * Reject: Significa que la promesa NO se cumplio
+ * Para poder verificar si se cumplio o no acudimos al uso de condicionales (if, else)
+ */
 
-//antes de ES6
+helloPromise() // esta linea nos permite ejecutar la promesa
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
 
-obj = { name: name, age: age };
-
-//ahora con ES6
-
-obj2 = {name, age};
-
-// Ahora, se mostrara en consola para verificar que efectivamente se creo el objeto
-console.log(obj2);
+// then nos permite obtener la respuesta (pueden ser varios)
+// catch me permite objeter el error en caso de que no se cumpla la promesa

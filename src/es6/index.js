@@ -78,7 +78,7 @@ const helloPromise = () => {
         if (true) {
             resolve("Hey!");
         } else {
-            resolve("Ups!");
+            reject("Ups!");
         }
     });
 }
@@ -92,7 +92,6 @@ const helloPromise = () => {
 
 helloPromise() // esta linea nos permite ejecutar la promesa
     .then(response => console.log(response))
-    .then(()=> console.log("Hola"))
     .catch(error => console.log(error));
 
 // then nos permite obtener la respuesta (pueden ser varios)
